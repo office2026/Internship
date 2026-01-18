@@ -3,597 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DR Private Limited - Company Banner</title>
+    <title>Internships - DR Private Limited</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Ensure full viewport coverage */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            overflow-y: auto; /* Allow vertical scroll for new content */
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0A1931; /* Dark background for consistency */
-            display: flex;
-            flex-direction: column;
+        :root {
+            --deep-blue: #0A1931;
+            --electric-cyan: #00FFFF;
+            --gold: #FFD700;
+            --card-bg: #1a202c;
         }
 
-        /* Navbar specific styles */
-        .navbar {
-            background-color: rgba(15, 12, 41, 0.95); /* Slightly transparent dark blue */
+        body {
+            background-color: var(--deep-blue);
+            font-family: 'Montserrat', sans-serif;
             color: white;
-            padding: 1rem 1.5rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            scroll-behavior: smooth;
         }
-        .navbar-brand {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 1.8rem;
-            color: #87CEEB; /* Sky blue for logo */
-            text-shadow: 0 0 8px rgba(135, 206, 235, 0.6);
-            transition: color 0.3s ease;
+
+        .sci-fi-gradient {
+            background: linear-gradient(180deg, #0A1931 0%, #112240 100%);
         }
-        .navbar-brand:hover {
-            color: #ADD8E6;
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
-        .navbar-toggle {
-            display: none; /* Hidden by default, shown on small screens by JS */
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
+
+        .glass-card:hover {
+            border-color: var(--electric-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
         }
-        .navbar-toggle svg {
-            width: 28px;
-            height: 28px;
-            color: white;
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
-        .navbar-links {
-            display: flex;
-            gap: 2rem;
+
+        .btn-primary {
+            background: linear-gradient(90deg, #00FFFF, #0080FF);
+            color: #0A1931;
+            font-weight: 800;
+            transition: all 0.3s ease;
         }
-        .navbar-links a {
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s ease, transform 0.2s ease;
+
+        .btn-primary:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .internship-tag {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--electric-cyan);
+            border: 1px solid var(--electric-cyan);
+        }
+
+        /* Animated border effect for special cards */
+        .animated-border {
             position: relative;
-            padding-bottom: 5px; /* Space for underline */
+            overflow: hidden;
         }
-        .navbar-links a::after {
+        
+        .animated-border::before {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #00FFFF; /* Cyan underline */
-            transition: width 0.3s ease;
-        }
-        .navbar-links a:hover::after {
-            width: 100%;
-        }
-        .navbar-links a:hover {
-            color: #00FFFF; /* Cyan on hover */
-            transform: translateY(-2px);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--electric-cyan), transparent 30%);
+            animation: rotate 4s linear infinite;
         }
 
-        /* Mobile specific navbar styles */
-        @media (max-width: 767px) {
-            .navbar-toggle {
-                display: block;
-            }
-            .navbar-links {
-                display: none; /* Hidden by default on mobile */
-                flex-direction: column;
-                position: absolute;
-                top: 100%; /* Position below the navbar */
-                left: 0;
-                width: 100%;
-                background-color: rgba(15, 12, 41, 0.98); /* Slightly darker for mobile menu */
-                padding: 1rem 0;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-            }
-            .navbar-links.active {
-                display: flex;
-            }
-            .navbar-links a {
-                padding: 0.75rem 1.5rem;
-                text-align: center;
-                width: 100%;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-            .navbar-links a:last-child {
-                border-bottom: none;
-            }
-        }
-
-        /* Banner Container now acts as the primary full-height section */
-        .banner-container {
-            flex-shrink: 0; /* Prevent shrinking */
-            width: 100%;
-            min-height: calc(100vh - 64px - 80px); /* Full height minus navbar and slider height */
-            background: linear-gradient(135deg, #0A1931 0%, #1F4287 50%, #0A1931 100%); /* Deep Blue to Brighter Blue Gradient */
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            padding: 2rem 1rem; /* Add some padding for content */
-            box-sizing: border-box;
-        }
-        .banner-image {
+        .animated-border::after {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.15; /* Subtle overlay for texture */
-            z-index: 1;
-        }
-        .banner-content {
-            z-index: 10;
-            color: white;
-            max-width: 960px;
-            padding: 2rem;
-            box-sizing: border-box;
-            animation: fadeIn 1.5s ease-out forwards;
-        }
-        .headline {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: #00FFFF; /* Cyan for sci-fi feel */
-            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 25px rgba(0, 255, 255, 0.6); /* Stronger Glow effect */
-            animation: slideUp 1s ease-out forwards;
-            animation-delay: 0.5s;
-            opacity: 0;
-        }
-        .sub-headline {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 2.5rem;
-            color: #FFFFFF; /* Pure white for maximum contrast */
-            opacity: 0;
-            animation: slideUp 1s ease-out forwards;
-            animation-delay: 1s;
-        }
-        /* Enrollment Button Style */
-        .enrollment-button {
-            background: linear-gradient(to right, #FFD700, #FFC107); /* Gold gradient */
-            color: #333;
-            font-weight: 800;
-            padding: 1.25rem 3rem;
-            border-radius: 9999px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none; /* Remove underline */
-            animation: scaleIn 1s ease-out forwards, pulse-gold 2s infinite ease-in-out;
-            animation-delay: 1.5s;
-            opacity: 0;
-            transform: scale(0.9);
-        }
-        .enrollment-button:hover {
-            background: linear-gradient(to right, #FFC107, #FFD700); /* Reverse gradient on hover */
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-            animation: none; /* Disable pulse on hover */
+            inset: 2px;
+            background: var(--card-bg);
+            border-radius: 0.75rem;
         }
 
-        /* New section specific styles */
-        .info-section {
-            background-color: #1a202c; /* Darker background for contrast */
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            width: 100%;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 5; /* Above banner image, below main content */
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        @media (min-width: 768px) {
-            .info-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on larger screens */
-            }
-        }
-        .info-card {
-            background-color: #2d3748; /* Even darker card background */
-            padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .info-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-        }
-        .info-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #00FFFF; /* Cyan for headings */
-            text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
-        }
-        .info-card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #E0FFFF; /* Light white for body text */
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
         }
 
-        /* Enrollment Counter Section */
-        .enrollment-section {
-            background-color: #0F0C29; /* Dark blue, similar to banner */
-            color: white;
-            padding: 3rem 1.5rem;
-            text-align: center;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 10; /* Ensure it's above other elements if needed */
-        }
-        .enrollment-counter {
-            font-family: 'Inter', sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
-            color: #FFD700; /* Gold color for the number */
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
-            margin-bottom: 0.5rem;
-            animation: pulse-gold 1.5s infinite ease-in-out;
-        }
-        .enrollment-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #E0FFFF;
-        }
-
-        /* Alumni Testimonials Section */
-        .alumni-section {
-            background-color: #0A1931; /* Consistent dark background */
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .alumni-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        @media (min-width: 768px) {
-            .alumni-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on larger screens */
-            }
-        }
-        .alumni-card {
-            background-color: #1a202c; /* Slightly lighter card background */
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .alumni-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
-        }
-        .alumni-avatar {
-            width: 96px; /* Larger avatar */
-            height: 96px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #00FFFF; /* Cyan border */
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-        .alumni-quote {
-            font-size: 1.15rem;
-            font-style: italic;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            color: #E0FFFF;
-        }
-        .alumni-name {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: #FFD700; /* Gold for names */
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
-        }
-        .alumni-title {
-            font-size: 0.95rem;
-            color: #A0AEC0; /* Gray for titles */
-        }
-
-        /* Achievement Slider Section */
-        .achievement-slider-section {
-            background-color: #0A1931; /* Dark background */
-            padding: 0.5rem 0; /* Reduced padding */
-            overflow: hidden;
-            position: relative;
-            z-index: 15; /* Above other sections */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            height: 80px; /* Fixed height for the slider */
-            display: flex; /* Ensure flex for vertical centering */
-            align-items: center; /* Vertically center content */
-        }
-        .slider-container {
-            display: flex;
-            width: max-content; /* Allow content to stretch */
-            animation: slideLogos 30s linear infinite; /* Adjust duration based on number of logos */
-        }
-        .slider-item {
-            flex-shrink: 0;
-            width: 180px; /* Fixed width for each logo */
-            height: 70px; /* Adjusted height for logos */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 1.5rem; /* Reduced horizontal padding */
-        }
-        .slider-item img {
-            max-width: 100%;
-            max-height: 100%;
-            filter: grayscale(100%) brightness(150%); /* Make logos grayscale and brighter */
-            opacity: 0.7;
-            transition: opacity 0.3s ease, filter 0.3s ease;
-        }
-        .slider-item img:hover {
-            filter: grayscale(0%) brightness(100%); /* Color on hover */
-            opacity: 1;
-        }
-
-        @keyframes slideLogos {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Slide half the width to create seamless loop */
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes pulse-gold { /* Specific pulse for gold elements */
-            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); }
-            50% { transform: scale(1.03); box-shadow: 0 0 25px rgba(255, 215, 0, 0.9); }
-            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); }
-        }
-
-        /* Responsive adjustments for text sizes */
-        @media (max-width: 768px) {
-            .headline { font-size: 2.5rem; }
-            .sub-headline { font-size: 1.25rem; }
-            .banner-content { padding: 1.5rem; }
-            .info-card h3 { font-size: 1.75rem; }
-            .info-card p { font-size: 1rem; }
-            .enrollment-button { font-size: 1.5rem; }
-            .enrollment-counter { font-size: 3rem; }
-            .enrollment-text { font-size: 1.2rem; }
-            .alumni-card { padding: 1.5rem; }
-            .alumni-quote { font-size: 1rem; }
-            .alumni-name { font-size: 1.1rem; }
-            .alumni-title { font-size: 0.85rem; }
-            .slider-item { width: 150px; height: 70px; } /* Adjust for smaller screens */
-        }
-        @media (max-width: 480px) {
-            .headline { font-size: 2rem; }
-            .sub-headline { font-size: 1rem; }
-            .enrollment-button { padding: 1rem 2rem; font-size: 0.9rem; }
-            .info-card h3 { font-size: 1.5rem; }
-            .info-card p { font-size: 0.9rem; }
-            .enrollment-counter { font-size: 2.5rem; }
-            .enrollment-text { font-size: 1rem; }
-            .alumni-card { padding: 1rem; }
-            .alumni-avatar { width: 80px; height: 80px; }
-            .slider-item { width: 120px; height: 60px; } /* Further adjust for very small screens */
-        }
+        .content-wrap { position: relative; z-index: 1; }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <a href="#" class="navbar-brand">DR Private Limited</a>
-        <button class="navbar-toggle" aria-label="Toggle navigation" onclick="toggleNavbar()">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        </button>
-        <div class="navbar-links" id="navbarLinks">
-            <a href="#home">Home</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#enrollments">Enrollments</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#company-feedback">Partnerships</a>
-            <a href="index1.html">Internships</a> <!-- Link to your main internship page -->
-        </div>
+
+    <!-- Simple Nav -->
+    <nav class="p-6 flex justify-between items-center sticky top-0 bg-[#0A1931]/90 backdrop-blur-md z-50">
+        <a href="index.html" class="text-2xl font-black text-glow" style="color: var(--electric-cyan)">DR PRIVATE LTD</a>
+        <a href="index.html" class="text-sm font-bold border border-cyan-400 px-4 py-2 rounded-full hover:bg-cyan-400 hover:text-blue-900 transition">Back to Home</a>
     </nav>
 
-    <!-- Achievement Image Slider Section -->
-   
-
-    <!-- Main Banner Container (Full viewport height) -->
-    <div id="home" class="banner-container">
-        <!-- Background Image: Circuit Board for AI/Tech theme -->
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af647?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Circuit Board Background" class="banner-image">
-
-        <div class="banner-content">
-            <h2 class="headline">
-                Pioneering Tomorrow's Innovations
-            </h2>
-            <p class="sub-headline">
-                Explore Cutting-Edge Opportunities in AI, Space, and Advanced Technology.
-            </p>
-            <!-- Enrollment Button -->
-            <a href="index1.html" class="enrollment-button">
-                Enroll in an Internship Today!
-            </a>
+    <!-- Header Section -->
+    <header class="py-20 px-6 text-center sci-fi-gradient">
+        <h1 class="text-5xl md:text-7xl font-black mb-6 text-glow">INTERNSHIP <span style="color: var(--electric-cyan)">PROGRAMS</span></h1>
+        <p class="max-w-2xl mx-auto text-lg text-gray-300 mb-10">
+            Shape your career with industry-leading mentorship, hands-on exposure to AI, Space Tech, and Microsoft ecosystems.
+        </p>
+        <div class="flex justify-center gap-4 flex-wrap">
+            <span class="internship-tag px-4 py-1 rounded-full text-xs font-bold">WINTER 2024</span>
+            <span class="internship-tag px-4 py-1 rounded-full text-xs font-bold">REMOTE & ONSITE</span>
+            <span class="internship-tag px-4 py-1 rounded-full text-xs font-bold">CERTIFIED BY DRPL</span>
         </div>
-    </div>
+    </header>
 
-    <!-- New Section: Achievements and Verification -->
-    <section id="achievements" class="info-section">
-        <h2 class="text-4xl font-extrabold mb-12 text-center text-white" style="text-shadow: 0 0 10px rgba(255,255,255,0.3);">Why Choose DR Private Limited?</h2>
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>Proven Track Record</h3>
-                <p>Over <strong>500,000+ successful placements</strong> in leading tech companies. Our alumni are making significant impacts globally. Join a network of future leaders.</p>
+    <!-- Internship Roles Grid -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 border-l-4 border-cyan-400 pl-4">Available Domains</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- AI & Machine Learning -->
+            <div class="glass-card p-8 rounded-xl flex flex-col">
+                <div class="mb-4 text-cyan-400">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">AI & Deep Learning</h3>
+                <p class="text-gray-400 mb-6 flex-grow">Implement neural networks and computer vision models for next-gen automation systems.</p>
+                <button class="btn-primary py-3 rounded-lg uppercase tracking-wider text-sm">Apply Now</button>
             </div>
-            <div class="info-card">
-                <h3>Government Aligned Programs</h3>
-                <p>Our curriculum and training methodologies are designed to align with <strong>government skill development initiatives</strong>, ensuring industry relevance and recognition.</p>
-            </div>
-            <div class="info-card">
-                <h3>Microsoft Certified Training</h3>
-                <p>Gain a competitive edge with training modules that incorporate <strong>Microsoft-aligned technologies and best practices</strong>, preparing you for industry-recognized certifications.</p>
-            </div>
-            <div class="info-card">
-                <h3>Real-World Projects</h3>
-                <p>Work on live projects that simulate real industry challenges. Build a robust portfolio and gain invaluable experience that sets you apart.</p>
-            </div>
-        </div>
-        <div class="mt-12 text-center">
-            <a href="index1.html" class="enrollment-button">
-                Enroll in an Internship Today!
-            </a>
-        </div>
-    </section>
 
-    <!-- New Section: Fake Enrollment Updates -->
-    <section id="enrollments" class="enrollment-section">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4 text-white">Join Our Growing Community!</h2>
-            <div class="enrollment-counter" id="enrollmentCounter">500K</div>
-            <p class="enrollment-text">Students have already enrolled in our cutting-edge programs!</p>
+            <!-- Space Technology -->
+            <div class="glass-card p-8 rounded-xl flex flex-col">
+                <div class="mb-4 text-cyan-400">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.691.387a2 2 0 01-1.132.252l-4-.333a2 2 0 01-1.458-1.14l-1.5-4a2 2 0 00-1.3-1.113l-3.333-1a2 2 0 01-1.342-2.553l.666-2a2 2 0 012.553-1.342l3 1a2 2 0 001.3.113l4 1.5a2 2 0 011.14 1.458l.333 4a2 2 0 01-.252 1.132l-.387.691a6 6 0 00-.517 3.86l.477 2.387a2 2 0 00.547 1.022l1.428 1.428a2 2 0 002.828 0l1.428-1.428z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Satellite Systems</h3>
+                <p class="text-gray-400 mb-6 flex-grow">Analyze telemetry data and assist in orbital mechanics simulations for upcoming deployments.</p>
+                <button class="btn-primary py-3 rounded-lg uppercase tracking-wider text-sm">Apply Now</button>
+            </div>
+
+            <!-- Full Stack Dev -->
+            <div class="glass-card p-8 rounded-xl flex flex-col">
+                <div class="mb-4 text-cyan-400">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Cloud Engineering</h3>
+                <p class="text-gray-400 mb-6 flex-grow">Master Microsoft Azure deployments and scalable backend architecture for global traffic.</p>
+                <button class="btn-primary py-3 rounded-lg uppercase tracking-wider text-sm">Apply Now</button>
+            </div>
+
         </div>
     </section>
 
-    <!-- New Section: Alumni Testimonials -->
-    <section id="testimonials" class="alumni-section">
-        <h2 class="text-4xl font-extrabold mb-12 text-center text-white" style="text-shadow: 0 0 10px rgba(255,255,255,0.3);">Hear From Our Successful Alumni</h2>
-        <div class="alumni-grid">
-            <div class="alumni-card">
-                <img src="https://st.depositphotos.com/1011643/1248/i/450/depositphotos_12485610-stock-photo-female-white-collar-worker-in.jpg" alt="Alumni Avatar 1" class="alumni-avatar">
-                <p class="alumni-quote">"DR Private Limited's internship was a game-changer. The hands-on experience in AI development was invaluable, leading directly to my first role in a top tech firm. Truly transformative!"</p>
-                <p class="alumni-name">Dr. Anya Sharma</p>
-                <p class="alumni-title">AI Research Scientist, TechCorp</p>
+    <!-- Why Us (Simplified Grid) -->
+    <section class="py-20 bg-[#0F172A]">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl font-black mb-6">THE <span class="text-cyan-400">DRPL</span> ADVANTAGE</h2>
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <div class="bg-cyan-400/20 p-2 rounded text-cyan-400 h-fit mt-1">✓</div>
+                        <div>
+                            <h4 class="font-bold text-xl">Direct Industry Mentorship</h4>
+                            <p class="text-gray-400">Work directly with senior engineers from top-tier firms like Microsoft and Meta.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="bg-cyan-400/20 p-2 rounded text-cyan-400 h-fit mt-1">✓</div>
+                        <div>
+                            <h4 class="font-bold text-xl">Pre-Placement Offers (PPO)</h4>
+                            <p class="text-gray-400">Top 5% of interns receive immediate full-time job offers at DRPL or partner firms.</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="bg-cyan-400/20 p-2 rounded text-cyan-400 h-fit mt-1">✓</div>
+                        <div>
+                            <h4 class="font-bold text-xl">Global Certification</h4>
+                            <p class="text-gray-400">Earn a verifiable certificate recognized by major international technology consortiums.</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="alumni-card">
-                <img src="https://img.freepik.com/free-photo/content-successful-male-manager-using-tablet-looking-camera_1262-14194.jpg?semt=ais_hybrid&w=740" alt="Alumni Avatar 2" class="alumni-avatar">
-                <p class="alumni-quote">"The real-world projects at DR Private Limited gave me the confidence and skills I needed. Their focus on emerging technologies is unmatched. Highly recommend for aspiring innovators!"</p>
-                <p class="alumni-name">Mr. Rohan Kapoor</p>
-                <p class="alumni-title">Aerospace Engineer, SpaceTech Solutions</p>
-            </div>
-            <div class="alumni-card">
-                <img src="https://media.istockphoto.com/id/1181196053/photo/smiling-indian-young-woman-sales-professional-arms-crossed-looking-at-camera-isolated-on-grey.jpg?s=612x612&w=0&k=20&c=UhS9kZYnZMvrG42cKt42_tnVFRIu1CjqMZwft2edQ84=" alt="Alumni Avatar 3" class="alumni-avatar">
-                <p class="alumni-quote">"The Microsoft-aligned training was incredibly beneficial. I felt fully prepared for my certification exams and landed a fantastic position. DR Private Limited truly invests in its students."</p>
-                <p class="alumni-name">Ms. Priya Singh</p>
-                <p class="alumni-title">Cloud Solutions Architect, Global IT</p>
-            </div>
-            <div class="alumni-card">
-                <img src="https://static.vecteezy.com/system/resources/previews/055/249/357/large_2x/confident-young-professional-man-in-bright-modern-corporate-environment-photo.jpg" alt="Alumni Avatar 4" class="alumni-avatar">
-                <p class="alumni-quote">"Beyond the technical skills, the mentorship I received was exceptional. DR Private Limited fosters a supportive environment that truly accelerates your professional growth."</p>
-                <p class="alumni-name">Eng. David Chen</p>
-                <p class="alumni-title">Robotics Developer, Future Systems Inc.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- New Section: Company Feedback/Praise -->
-    <section id="company-feedback" class="info-section">
-        <h2 class="text-4xl font-extrabold mb-12 text-center text-white" style="text-shadow: 0 0 10px rgba(255,255,255,0.3);">What Industry Leaders Say About Our Talent</h2>
-        <div class="alumni-grid"> <!-- Reusing alumni-grid for similar layout -->
-            <div class="alumni-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png" alt="Microsoft Logo" class="alumni-avatar" style="border: none; box-shadow: none; filter: grayscale(0%);">
-                <p class="alumni-quote">"DR Private Limited consistently provides us with exceptionally well-prepared freshers who quickly become valuable assets to our teams. Their practical skills are truly impressive."</p>
-                <p class="alumni-name">Microsoft Recruiting Team</p>
-                <p class="alumni-title">Global Talent Acquisition</p>
-            </div>
-            <div class="alumni-card">
-                <img src="data:image/jpeg;base64,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" alt="Meta Logo" class="alumni-avatar" style="border: none; box-shadow: none; filter: grayscale(0%);">
-                <p class="alumni-quote">"The students from DR Private Limited demonstrate a strong grasp of cutting-edge technologies. They are highly adaptable and contribute meaningfully from day one."</p>
-                <p class="alumni-name">Meta Talent Acquisition</p>
-                <p class="alumni-title">Engineering Leadership</p>
-            </div>
-            <div class="alumni-card">
-                <img src="https://1000logos.net/wp-content/uploads/2025/03/Amazon-Web-Services-Emblem.png" alt="AWS Logo" class="alumni-avatar" style="border: none; box-shadow: none; filter: grayscale(0%);">
-                <p class="alumni-quote">"We've been consistently impressed by the caliber of interns and fresh graduates from DR Private Limited. Their foundation in cloud and AI is excellent."</p>
-                <p class="alumni-name">Amazon Web Services (AWS)</p>
-                <p class="alumni-title">Cloud Solutions Division</p>
-            </div>
-            <div class="alumni-card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="Google Logo" class="alumni-avatar" style="border: none; box-shadow: none; filter: grayscale(0%);">
-                <p class="alumni-quote">"DR Private Limited's commitment to nurturing future tech talent is evident in their graduates. They bring fresh perspectives and solid skills to our innovation teams."</p>
-                <p class="alumni-name">Google Careers Team</p>
-                <p class="alumni-title">University Programs</p>
+            
+            <div class="animated-border p-1 rounded-xl">
+                <div class="content-wrap p-10 bg-gray-900 rounded-lg text-center">
+                    <h3 class="text-6xl font-black text-cyan-400 mb-2">98%</h3>
+                    <p class="text-xl font-bold mb-4">Success Rate</p>
+                    <p class="text-gray-400 italic">"Our interns have been placed in Fortune 500 companies within 3 months of completion."</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="py-10 border-t border-white/10 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 DR Private Limited. All rights reserved. Pioneering the future of technology.</p>
+    </footer>
 
-    <script>
-        // JavaScript for mobile navigation toggle
-        function toggleNavbar() {
-            const navbarLinks = document.getElementById('navbarLinks');
-            navbarLinks.classList.toggle('active');
-        }
-
-        // Fake Enrollment Counter (in thousands)
-        let currentEnrollments = 500; // Starting number in thousands (e.g., 500 means 500,000)
-        const enrollmentCounterElement = document.getElementById('enrollmentCounter');
-
-        function updateEnrollmentCounter() {
-            // Increment the counter by a small random amount (e.g., 0.1 to 0.5 thousand)
-            const increment = (Math.floor(Math.random() * 5) + 1) / 10; // Adds 0.1K to 0.5K
-            currentEnrollments += increment;
-            enrollmentCounterElement.textContent = Math.floor(currentEnrollments) + 'K'; // Display as X K
-        }
-
-        // Update every few seconds
-        setInterval(updateEnrollmentCounter, 3000); // Update every 3 seconds
-
-        // Initial update when the page loads
-        updateEnrollmentCounter();
-
-        // Duplicate slider items for seamless loop
-        const slider = document.getElementById('achievementSlider');
-        const sliderContent = slider.innerHTML;
-        slider.innerHTML += sliderContent; // Duplicate the content
-    </script>
 </body>
 </html>
